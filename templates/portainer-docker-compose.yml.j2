@@ -11,5 +11,5 @@ services:
       - "9443:9443/tcp"
     volumes:
       - portainer_data:/data
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: always
