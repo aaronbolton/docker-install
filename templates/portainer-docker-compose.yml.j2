@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+---
+version: "3"
+
+services:
+  portainer:
+    container_name: portainer
+    image: cr.portainer.io/portainer/portainer-ce:2.9.3
+    ports:
+      - "8000:8000/tcp"
+      - "9443:9443/tcp"
+    volumes:
+      - 'portainer_data:/data'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    restart: always

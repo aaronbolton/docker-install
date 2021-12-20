@@ -1,0 +1,6 @@
+---
+# Location where configuration files will be stored.
+config_dir: '~'
+
+# portainer configuration.
+portainer_enable: true

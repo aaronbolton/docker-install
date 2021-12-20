@@ -1,0 +1,24 @@
+---
+- name: Create Portainer folder.
+  ansible.builtin.file:
+    path: "{{ config_dir }}/portainer"
+    state: directory
+    mode: 0755
+  become: false
+
+- name: Copy Portainer docker-compose template.
+  ansible.builtin.template:
+    src: templates/portainer.yml.j2
+    dest: "{{ config_dir }}/portainer/docker-compose.yml"
+    mode: '0640'
+  become: false
+  notify: Restart portainer
+
+- name: Create DB volume.
+  ansible.builtin.command: docker volume create portainer_data
+
+- name: Ensure Pi-hole is running.
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/portainer/"
+    build: false
+  become: false
