@@ -10,9 +10,9 @@ services:
       - "8000:8000/tcp"
       - "9443:9443/tcp"
     volumes:
-      - portainer_data:/data
+      - data:/data
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
 
 volumes:
-  portainer_data:
+  data:
